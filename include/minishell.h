@@ -25,4 +25,11 @@ typedef struct s_token
 	char c;
 }		t_token;
 
+//utils.c
+int	ft_isspace(char c);
+int	ft_isalpha(char c);
+int	ft_isnumber(char c);
+int	ft_strlen(char *str);
+
+
 #endif
