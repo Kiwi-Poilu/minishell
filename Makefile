@@ -3,7 +3,8 @@ NAME = minishell
 INC = include 
 
 SRCS =	srcs/main.c \
-		srcs/utils.c
+		srcs/utils.c \
+		srcs/lexer.c
 
 OBJS = ${SRCS:.c=.o}
 
