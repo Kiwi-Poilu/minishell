@@ -1,75 +1,76 @@
 #include "../include/minishell.h"
 
-void	display_tokens(t_token *token, int size)
+void	display_chr(t_chr *chr, int size)
 {
 	int i;
 
 	i = 0;
 	while (i < size)
 	{
-		printf("%c -> ", token[i].c);
-		if (token[i].type == 0)
-			printf("%s\n", "token_alpha");
-		if (token[i].type == 1)
-			printf("%s\n", "token_number");
-		if (token[i].type == 2)
-			printf("%s\n", "token_space");
-		if (token[i].type == 3)
-			printf("%s\n", "token_open_bracket");
-		if (token[i].type == 4)
-			printf("%s\n", "token_close_bracket");
-		if (token[i].type == 5)
-			printf("%s\n", "token_open_paren");
-		if (token[i].type == 6)
-			printf("%s\n", "token_close_paren");
-		if (token[i].type == 7)
-			printf("%s\n", "token_single_quote");
-		if (token[i].type == 8)
-			printf("%s\n", "token_double_quote");
-		if (token[i].type == 9)
-			printf("%s\n", "token_unknown");
+		printf("%c -> ", chr[i].c);
+		if (chr[i].type == 0)
+			printf("%s\n", "chr_alpha");
+		if (chr[i].type == 1)
+			printf("%s\n", "chr_number");
+		if (chr[i].type == 2)
+			printf("%s\n", "chr_space");
+		if (chr[i].type == 3)
+			printf("%s\n", "chr_open_bracket");
+		if (chr[i].type == 4)
+			printf("%s\n", "chr_close_bracket");
+		if (chr[i].type == 5)
+			printf("%s\n", "chr_open_paren");
+		if (chr[i].type == 6)
+			printf("%s\n", "chr_close_paren");
+		if (chr[i].type == 7)
+			printf("%s\n", "chr_single_quote");
+		if (chr[i].type == 8)
+			printf("%s\n", "chr_double_quote");
+		if (chr[i].type == 9)
+			printf("%s\n", "chr_unknown");
 		i++;
 	}
 }
 
-void	tokeniser(char c, t_token *token)
+void	chriser(char c, t_chr *chr)
 {
-	token->c = c;
+	chr->c = c;
 	if (ft_isspace(c) == 1)
-		token->type = token_space; 
+		chr->type = chr_space; 
 	else if (ft_isnumber(c) == 1)
-		token->type = token_number;
+		chr->type = chr_number;
 	else if (ft_isalpha(c) == 1)
-		token->type = token_alpha;
+		chr->type = chr_alpha;
 	else if (c == '(')
-		token->type = token_open_paren;
+		chr->type = chr_open_paren;
 	else if (c == ')')
-		token->type = token_close_paren;
+		chr->type = chr_close_paren;
 	else if (c == '{')
-		token->type = token_open_bracket;
+		chr->type = chr_open_bracket;
 	else if (c == '}')
-		token->type = token_close_bracket;
+		chr->type = chr_close_bracket;
 	else if (c == '\'')
-		token->type = token_single_quote;
+		chr->type = chr_single_quote;
 	else if (c == '\"')
-		token->type = token_double_quote;
+		chr->type = chr_double_quote;
 	else
-		token->type = token_unknown;
+		chr->type = chr_unknown;
 }
 
 void	lexer(char *str)
 {
 	int i;
-	t_token *token;
+	t_chr *chr;
 
-	token = malloc(sizeof(t_token) * ft_strlen(str));
+	chr = malloc(sizeof(t_chr) * ft_strlen(str));
 	i = 0;
 
 	while (i < ft_strlen(str) && str[i] != '\0')
 	{
 		if (str[i] != ' ')
-			tokeniser(str[i], &token[i]);
+			chriser(str[i], &chr[i]);
 		i++;
 	}
-	display_tokens(token, i);
+	
+	display_chr(chr, i);
 }
