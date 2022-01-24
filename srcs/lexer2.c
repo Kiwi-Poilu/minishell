@@ -1,17 +1,5 @@
 #include "../include/parsing.h"
 
-int     ft_strlen(char *str)
-{
-    int i; 
-
-    i = 0;
-    while (str[i])
-    {
-        i++;
-    }
-    return (i);
-}
-
 int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t i;
@@ -150,8 +138,16 @@ t_token    *lexer(char *str)
     return (first_token);
 }
 
-
-int     main(int ac, char **av, char **envp)
+int     main(int ac, char **av)
 {
-    lexer(av[1]);
+    int i;
+    char *rl_rt;
+
+    i = 0;
+    while (1)
+    {
+        rl_rt = readline("kiwishell: ");
+        lexer(rl_rt);
+    }
+  //  lexer(av[1]);
 }

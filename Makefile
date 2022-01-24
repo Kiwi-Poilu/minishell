@@ -2,9 +2,10 @@ NAME = minishell
 
 INC = include 
 
-SRCS =	srcs/main.c \
-		srcs/utils.c \
-		srcs/lexer.c
+SRCS =	srcs/utils.c \
+		srcs/lexer2.c \
+		srcs/list.c
+
 
 OBJS = ${SRCS:.c=.o}
 
@@ -12,7 +13,7 @@ CC = clang
 
 RM = rm -f
 
-CFLAGS = -g3 -Wall -Werror -Wextra
+CFLAGS = -g3 -Wall -Wextra
 
 all : $(NAME)
 
