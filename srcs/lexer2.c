@@ -14,6 +14,22 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (0);
 }
 
+char    *ft_strdup(char *str)
+{
+    int i;
+    char *ret;
+
+    i = 0;
+    ret = malloc(sizeof(char) * (ft_strlen(str) + 1));
+    while (str[i] != '\0') 
+    {
+        ret[i] = str[i];
+        i++;
+    }
+    ret[i] = '\0';
+    return (ret);
+}
+
 int     get_token_size(char *str)
 {
     static int i = 0;
@@ -22,6 +38,9 @@ int     get_token_size(char *str)
 
     quote = 0;
     ret = 0;
+    if (!str)
+        return (0);
+    printf("i = %d\n", i);
     while (str[i])
     {
         if (str[i] == '"')
@@ -55,7 +74,8 @@ char    *get_token(char *str)
     quote = get_token_size(str);
     if (quote == 0)
         return (NULL); 
-    token = malloc(sizeof(char) * quote);
+    printf("to_malloc = %d\n", quote);
+    token = malloc(sizeof(char) * (quote + 1));
     if (!token)
         return (NULL);
     quote = 0;
@@ -78,6 +98,7 @@ char    *get_token(char *str)
         j++;
         i++;
     }
+    token[j] = '\0';
     return (token);
 }
 
@@ -120,7 +141,10 @@ t_token    *lexer(char *str)
     t_token *first_token;
     t_token *new_node;
     char *token;
+    int pos;
 
+    pos = 0;
+    first_token = NULL;
     token = get_token(str);
     if (token != NULL)
         first_token = ft_lstnew(token, get_type(token));
@@ -138,16 +162,35 @@ t_token    *lexer(char *str)
     return (first_token);
 }
 
+get_token2(const char str, &pos)
+{
+
+}
+
+t_token     *lexer(char *str)
+{
+    int     pos;
+    char    *token;
+
+    pos = 0;
+    while (pos < ft_strlen(str))
+    {
+        token = get_token2(str, &pos);
+
+    }
+}
+
 int     main(int ac, char **av)
 {
     int i;
     char *rl_rt;
 
+    (void)ac;
+    (void)av;
     i = 0;
     while (1)
     {
         rl_rt = readline("kiwishell: ");
         lexer(rl_rt);
     }
-  //  lexer(av[1]);
 }

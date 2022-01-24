@@ -7,7 +7,7 @@ t_token	*ft_lstnew(char *token, enum Type type)
 	if (!(new = malloc(sizeof(t_token))))
 		return (NULL);
     new->type = type;
-	new->token = strdup(token);
+	new->token = ft_strdup(token);
 	new->next = NULL;
 	return (new);
 }

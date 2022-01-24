@@ -33,5 +33,10 @@ t_token	*ft_lstnew(char *token, enum Type type);
 void	ft_lstadd_back(t_token **alst, t_token *new);
 void	ft_lstadd_front(t_token **alst, t_token *new);
 
+//utils.c
+int	ft_strlen(char *str);
+
+//lexer2.c
+char    *ft_strdup(char *str);
 
 #endif

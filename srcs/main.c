@@ -6,7 +6,7 @@ int	main(void)
 	
 	while (1)
 	{
-		rl_rt = readline("kiwishell$ ");
+		rl_rt = readline("megashell$ ");
 		printf("%s\n", rl_rt);
 		lexer(rl_rt);
 	}
